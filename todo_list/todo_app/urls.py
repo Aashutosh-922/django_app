@@ -8,8 +8,10 @@ router.register(r'todoitems', TodoItemViewSet)
 router.register(r'tags', TagViewSet)
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    
+    #path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
+    
 ]
 
 

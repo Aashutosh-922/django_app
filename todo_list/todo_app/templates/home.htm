@@ -1,6 +1,81 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>To-Do List</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>To-Do List</h1>
+
+    <form id="addTaskForm">
+        <input type="text" id="taskInput" placeholder="Enter task">
+        <button type="submit">Add Task</button>
+    </form>
+
+    <ul id="taskList">
+        <!-- Tasks will be dynamically added here -->
+    </ul>
+
+    <script>
+        $(document).ready(function() {
+            // Function to fetch tasks from the API
+            function fetchTasks() {
+                $.ajax({
+                    url: "/api/todoitems/",
+                    method: "GET",
+                    success: function(data) {
+                        // Clear the task list
+                        $("#taskList").empty();
+
+                        // Iterate through the tasks and add them to the list
+                        data.forEach(function(task) {
+                            var listItem = $("<li>").text(task.title);
+                            $("#taskList").append(listItem);
+                        });
+                    },
+                    error: function(error) {
+                        console.log("Error fetching tasks:", error);
+                    }
+                });
+            }
+
+            // Fetch tasks on page load
+            fetchTasks();
+
+            // Function to add a new task
+            $("#addTaskForm").submit(function(event) {
+                event.preventDefault();
+
+                var taskTitle = $("#taskInput").val();
+
+                $.ajax({
+                    url: "/api/todoitems/",
+                    method: "POST",
+                    data: {
+                        title: taskTitle
+                    },
+                    success: function() {
+                        // Fetch tasks again to update the list
+                        fetchTasks();
+
+                        // Clear the input field
+                        $("#taskInput").val("");
+                    },
+                    error: function(error) {
+                        console.log("Error adding task:", error);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
     <title>Todo List</title>
 </head>
 <body>
@@ -12,4 +87,4 @@
         {% endfor %}
     </ul>
 </body>
-</html>
+</html> -->

@@ -1,18 +1,24 @@
-# django_app
-Steps for running a django project:
-.
-Step 1: git clone <repo url> on local machine
-.
-Step 2: python -m venv venv (creating virtual environment)
-. 
-.
-Step 3: myenv\Scripts\activate (for linux)
-.  
-Step 4: pip install -r requirements.txt (install requirements file)
-.  
-Step 5: python manage.py migrate (database migrations)
-.  
-Step 6: python manage.py runserver (run the server)
-.
-Your Django app is now running locally, 
-and you can access it in your web browser at http://127.0.0.1:8000/
+## Running the Django App
+
+Follow these steps to run the Django app after cloning it from the Git repository.
+
+### Prerequisites
+
+- Python installed on your system.
+
+### Setup
+
+1. Clone the repository to your local machine.
+
+   ```bash
+   git clone https://github.com/your-username/your-django-app.git
+
+2. python -m venv myenv
+
+3. myenv\Scripts\activate
+
+4.pip install -r requirements.txt
+
+5.python manage.py migrate
+
+6.python manage.py runserver

@@ -12,7 +12,7 @@ Follow these steps to run the Django app after cloning it from the Git repositor
 
    ```bash
    git clone https://github.com/your-username/your-django-app.git
-
+   
 2. python -m venv myenv
 
 3. myenv\Scripts\activate
